@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.io.IOException;
 
 
@@ -45,8 +47,7 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
         frequency = (TextView) findViewById(R.id.frequency);
         radio = (TextView) findViewById(R.id.radio);
         singer = (TextView) findViewById(R.id.singer);
-        mExitButton=(Button) findViewById(R.id.exitButton);
-
+        mExitButton = (Button) findViewById(R.id.exitButton);
 
 
         mPlay.setOnClickListener(this);
@@ -93,29 +94,21 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 .create()
                 .show();*/
     }
+
     @Override
     public void onClick(View v) {
         String mTag = (String) v.getTag();
 
         switch (mTag) {
             case "exit":
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-                builder.setTitle("Exit the radio ?")
-                        .setMessage("You're leaving the radio")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent();
-                                setResult(1, intent);
-                                mediaPlayer.pause();
-                                paused = true;
-                                mPlay.setImageResource(R.drawable.play_white);
-                                finish();
-                            }
-                        })
-                        .create()
-                        .show();
+                Intent intent = new Intent();
+                setResult(1, intent);
+                mediaPlayer.pause();
+                paused = true;
+                mPlay.setImageResource(R.drawable.play_white);
+                Toast.makeText(getApplicationContext(), "Leaving the radio area...", Toast.LENGTH_SHORT).show();
+                finish();
 
                 break;
 

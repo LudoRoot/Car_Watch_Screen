@@ -8,16 +8,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.util.concurrent.TimeUnit;
 
 
-public class MovieActivity extends AppCompatActivity implements View.OnClickListener{
+public class MovieActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mTextMessage;
     private ImageButton mPlay;
@@ -32,6 +34,8 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
 
     private LinearLayout mLinearLayout;
     private int position = 0;
+
+    private Button mExitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,7 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
         mSkipPrevious = (ImageButton) findViewById(R.id.skip_previous);
         mSkipNext = (ImageButton) findViewById(R.id.skip_next);
         mLinearLayout = (LinearLayout) findViewById(R.id.linearlayout);
+        mExitButton = (Button) findViewById(R.id.exitButton);
 
 
         // Nom de la video
@@ -81,7 +86,6 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
             mediaController.setAnchorView(mVideoView);
 
 
-
             // Set MediaController for VideoView
             mVideoView.setMediaController(mediaController);
         }
@@ -90,7 +94,7 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mVideoView.seekTo(position);
-                if(position == 0){
+                if (position == 0) {
                     mVideoView.start();
                 }
             }
@@ -103,6 +107,7 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
         mFastRewind.setOnClickListener(this);
         mSkipPrevious.setOnClickListener(this);
         mSkipNext.setOnClickListener(this);
+        mExitButton.setOnClickListener(this);
 
         mPlay.setTag("play");
         mPause.setTag("pause");
@@ -112,6 +117,7 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
         mSkipPrevious.setTag("skipprevious");
         mSkipNext.setTag("skipnext");
         mVideoView.setTag("video");
+        mExitButton.setTag("exit");
 
     }
 
@@ -120,6 +126,15 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
         String mTag = (String) v.getTag();
 
         switch (mTag) {
+            case "exit":
+
+                Intent intent = new Intent();
+                setResult(2, intent);
+                mVideoView.stopPlayback();
+                Toast.makeText(getApplicationContext(), "Leaving the movie area...", Toast.LENGTH_SHORT).show();
+                finish();
+
+                break;
             case "play":
                 mVideoView.start();
                 break;
