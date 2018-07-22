@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
+import android.widget.Toast;
 
 
 public class CallActivity extends AppCompatActivity {
@@ -24,6 +24,7 @@ public class CallActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
                         setResult(0, intent);
+                        Toast.makeText(getApplicationContext(), "Leaving the call area...", Toast.LENGTH_SHORT).show();
                         finish();
                     }
                 })
