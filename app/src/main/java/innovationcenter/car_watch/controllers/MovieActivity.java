@@ -1,7 +1,5 @@
-package controllers;
+package innovationcenter.car_watch.controllers;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -17,6 +15,8 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.util.concurrent.TimeUnit;
+
+import controllers.R;
 
 
 public class MovieActivity extends AppCompatActivity implements View.OnClickListener {

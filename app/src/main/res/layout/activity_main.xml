@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/hd_wallpaper"
-    tools:context="MainActivity">
+    tools:context="innovationcenter.car_watch.controllers.MainActivity">
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
 

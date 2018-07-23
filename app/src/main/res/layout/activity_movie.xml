@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:alpha="1"
     android:minHeight="180dp"
-    tools:context="MovieActivity"
+    tools:context="innovationcenter.car_watch.controllers.MovieActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <FrameLayout

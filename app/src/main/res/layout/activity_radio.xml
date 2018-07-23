@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/danse"
-    tools:context="RadioActivity">
+    tools:context="innovationcenter.car_watch.controllers.RadioActivity">
 
 
     <RelativeLayout
@@ -19,7 +19,7 @@
         design:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/equalizerIButton"
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
@@ -28,7 +28,7 @@
             android:scaleType="fitCenter"
             design:srcCompat="@drawable/equalizer" />
 
-        <Button
+        <ImageButton
             android:id="@+id/exitButton"
             android:layout_width="50dp"
             android:layout_height="match_parent"

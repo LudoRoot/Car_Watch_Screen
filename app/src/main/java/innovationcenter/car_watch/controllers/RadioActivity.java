@@ -1,4 +1,4 @@
-package controllers;
+package innovationcenter.car_watch.controllers;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+
+import controllers.R;
 
 
 public class RadioActivity extends AppCompatActivity implements View.OnClickListener {
@@ -29,7 +31,8 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
     private TextView frequency;
     private TextView radio;
     private TextView singer;
-    private Button mExitButton;
+    private ImageButton mExit;
+    private ImageButton mEqualizer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,8 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
         frequency = (TextView) findViewById(R.id.frequency);
         radio = (TextView) findViewById(R.id.radio);
         singer = (TextView) findViewById(R.id.singer);
-        mExitButton = (Button) findViewById(R.id.exitButton);
+        mExit = (ImageButton) findViewById(R.id.exitButton);
+        mEqualizer = (ImageButton) findViewById(R.id.equalizerIButton);
 
 
         mPlay.setOnClickListener(this);
@@ -57,7 +61,8 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
         mPlay4.setOnClickListener(this);
         mPlay5.setOnClickListener(this);
         mPlay6.setOnClickListener(this);
-        mExitButton.setOnClickListener(this);
+        mExit.setOnClickListener(this);
+        mEqualizer.setOnClickListener(this);
 
         mPlay.setTag("play");
         mPlay1.setTag("play1");
@@ -66,8 +71,8 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
         mPlay4.setTag("play4");
         mPlay5.setTag("play5");
         mPlay6.setTag("play6");
-        mExitButton.setTag("exit");
-
+        mExit.setTag("exit");
+        mEqualizer.setTag("equal");
 
         this.mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bosco);
         mediaPlayer.start();
@@ -75,24 +80,6 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
         radio.setText("RFM");
         paused = false;
         singer.setText("Placebo");
-
-
-
-
-      /*  AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle("You're listening to the radio right now!")
-                .setMessage("Et les nouvelles du jour sont ...")
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent();
-                        setResult(1, intent);
-                        finish();
-                    }
-                })
-                .create()
-                .show();*/
     }
 
     @Override
@@ -109,6 +96,12 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 mPlay.setImageResource(R.drawable.play_white);
                 Toast.makeText(getApplicationContext(), "Leaving the radio area...", Toast.LENGTH_SHORT).show();
                 finish();
+
+                break;
+
+            case "equal":
+                Intent EqualizerActivity = new Intent(RadioActivity.this, EqualizerActivity.class);
+                startActivity(EqualizerActivity);
 
                 break;
 
