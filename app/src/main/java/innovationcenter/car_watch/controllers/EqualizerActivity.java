@@ -87,7 +87,7 @@ public class EqualizerActivity extends AppCompatActivity implements SeekBar.OnSe
 //        sliders[7] = (SeekBar)findViewById(R.id.slider_8);
 //        slider_labels[7] = (TextView)findViewById(R.id.slider_label_8);
 
-        eq = new Equalizer(0, 1);                       // < ----  paramètre ?? a approfondir !!
+        eq = new Equalizer(0, 1);                       // < ----  paramètre  ?? a approfondir !!
         if (eq != null) {
             eq.setEnabled(true);
             int num_bands = eq.getNumberOfBands();
