@@ -8,5 +8,6 @@
     <string name="about">About...</string>
     <string name="ok">OK</string>
     <string name="enabled">Enabled</string>
+    <string name="service_name">Audio Service</string>
     <string name="copyright_message">Simple Equalizer v0.1a, Copyright \u00A92013 Kevin Boone. Feel free to distribute as you see fit.</string>
 </resources>

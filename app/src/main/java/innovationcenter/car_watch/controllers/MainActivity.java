@@ -2,6 +2,7 @@ package innovationcenter.car_watch.controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         mCallButton = (Button) findViewById(R.id.activity_main_call_btn);
         mRadioButton = (Button) findViewById(R.id.activity_main_radio_btn);
         mMovieButton = (Button) findViewById(R.id.activity_main_movie_btn);
@@ -73,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mNavButton.setOnClickListener(this);
         mConfButton.setOnClickListener(this);
         mBTButton.setOnClickListener(this);
+
     }
 
     @Override
