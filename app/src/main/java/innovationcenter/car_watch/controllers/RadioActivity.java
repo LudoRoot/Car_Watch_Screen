@@ -1,7 +1,10 @@
 package innovationcenter.car_watch.controllers;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -41,6 +44,8 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_radio);
 
+      //  this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         mPlay = (ImageButton) findViewById(R.id.play_music);
         mPlay.setImageResource(R.drawable.baseline_pause_circle_outline_24);
         mPlay1 = (Button) findViewById(R.id.preset1);
@@ -77,11 +82,11 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
         mEqualizer.setTag("equal");
 
         this.mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bosco);
-        mMediaPlayer.start();
-        frequency.setText("102.5");
-        radio.setText("RFM");
-        paused = false;
-        singer.setText("Placebo");
+        //mMediaPlayer.start();
+        frequency.setText("");
+        radio.setText("");
+        paused = true;
+        singer.setText("");
 
     }
 
@@ -94,7 +99,7 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
 
                 Intent intent = new Intent();
                 setResult(1, intent);
-                mMediaPlayer.pause();
+                mMediaPlayer.stop();
                 paused = true;
                 mPlay.setImageResource(R.drawable.play_white);
                 Toast.makeText(getApplicationContext(), "Leaving the radio area...", Toast.LENGTH_SHORT).show();
@@ -105,8 +110,8 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
             case "equal":
                 Intent EqualizerActivity = new Intent(this, AudioFxActivity.class);
                 mAudioSessId = mMediaPlayer.getAudioSessionId();
-                //Log.i(LOG_TAG, "audioSessID_RA = " + mAudioSessId);
-                EqualizerActivity.putExtra("audioSessID",mAudioSessId);
+                //Log.i(LOG_TAG, "audioSessID_RA = " + mAudioSessId);                                   //pour le dev, à enlever avant release
+                EqualizerActivity.putExtra("audioSessID", mAudioSessId);
                 startActivity(EqualizerActivity);
 
                 break;
@@ -126,15 +131,17 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case "play1":
-                if (this.mMediaPlayer.isPlaying()) {
-                    this.mMediaPlayer.stop();
-                    try {
-                        this.mMediaPlayer.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();
                 }
-                this.mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.police);
+                try {
+                    mMediaPlayer.reset();
+                    mMediaPlayer.setDataSource(getApplicationContext(), Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.police));
+                    mMediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
                 mMediaPlayer.start();
                 frequency.setText("103.3");
                 radio.setText("RMC");
@@ -143,16 +150,17 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case "play2":
-                if (this.mMediaPlayer.isPlaying()) {
-                    this.mMediaPlayer.stop();
-                    try {
-                        this.mMediaPlayer.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();
+                }
+                try {
+                    mMediaPlayer.reset();
+                    mMediaPlayer.setDataSource(getApplicationContext(), Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.muse));
+                    mMediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-                this.mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.muse);
                 mMediaPlayer.start();
                 frequency.setText("92.8");
                 radio.setText("France Inter");
@@ -161,16 +169,17 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case "play3":
-                if (this.mMediaPlayer.isPlaying()) {
-                    this.mMediaPlayer.stop();
-                    try {
-                        this.mMediaPlayer.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();
+                }
+                try {
+                    mMediaPlayer.reset();
+                    mMediaPlayer.setDataSource(getApplicationContext(), Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.bosco));
+                    mMediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-                this.mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.bosco);
                 mMediaPlayer.start();
                 frequency.setText("102.5");
                 radio.setText("RFM");
@@ -179,17 +188,17 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case "play4":
-                if (this.mMediaPlayer.isPlaying()) {
-                    this.mMediaPlayer.stop();
-                    try {
-                        this.mMediaPlayer.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();
+                }
+                try {
+                    mMediaPlayer.reset();
+                    mMediaPlayer.setDataSource(getApplicationContext(), Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.hallowed_be_thy_name));
+                    mMediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-
-                this.mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.hallowed_be_thy_name);
                 mMediaPlayer.start();
                 frequency.setText("666.0");
                 radio.setText("Beast Radio");
@@ -198,16 +207,17 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case "play5":
-                if (this.mMediaPlayer.isPlaying()) {
-                    this.mMediaPlayer.stop();
-                    try {
-                        this.mMediaPlayer.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();
+                }
+                try {
+                    mMediaPlayer.reset();
+                    mMediaPlayer.setDataSource(getApplicationContext(), Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.noirdes));
+                    mMediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-                this.mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.noirdes);
                 mMediaPlayer.start();
                 frequency.setText("98.6");
                 radio.setText("Le Mou'v");
@@ -216,16 +226,17 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case "play6":
-                if (this.mMediaPlayer.isPlaying()) {
-                    this.mMediaPlayer.stop();
-                    try {
-                        this.mMediaPlayer.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                if (mMediaPlayer.isPlaying()) {
+                    mMediaPlayer.stop();
+                }
+                try {
+                    mMediaPlayer.reset();
+                    mMediaPlayer.setDataSource(getApplicationContext(), Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.maroon));
+                    mMediaPlayer.prepare();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
 
-                this.mMediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.maroon);
                 mMediaPlayer.start();
                 frequency.setText("101.2");
                 radio.setText("Virgin Radio");
@@ -234,7 +245,6 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-
 
 
 }

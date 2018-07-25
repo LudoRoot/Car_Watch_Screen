@@ -1,6 +1,7 @@
 package innovationcenter.car_watch.controllers;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+       // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         mCallButton = (Button) findViewById(R.id.activity_main_call_btn);
         mRadioButton = (Button) findViewById(R.id.activity_main_radio_btn);

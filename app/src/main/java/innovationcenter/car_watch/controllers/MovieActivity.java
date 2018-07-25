@@ -1,6 +1,7 @@
 package innovationcenter.car_watch.controllers;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,21 +42,9 @@ public class MovieActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
-//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//
-//        builder.setTitle("You're watching a movie right now!")
-//                .setMessage("The End")
-//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        Intent intent = new Intent();
-//                        setResult(2, intent);
-//                        finish();
-//                    }
-//                })
-//                .create()
-//                .show();
-//    }
+
+     //   this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         mTextMessage = (TextView) findViewById(R.id.message);
         mPlay = (ImageButton) findViewById(R.id.play);
         mPause = (ImageButton) findViewById(R.id.pause);

@@ -1,6 +1,8 @@
 package innovationcenter.car_watch.controllers;
 
 import android.Manifest;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -10,11 +12,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -25,12 +30,16 @@ import java.util.ArrayList;
 
 import controllers.R;
 
-public class AudioFxActivity extends AppCompatActivity {              //https://www.101apps.co.za/articles/perfect-sound-using-the-equalizer-effect-a-tutorial.html
+public class AudioFxActivity extends AppCompatActivity implements View.OnClickListener {              //https://www.101apps.co.za/articles/perfect-sound-using-the-equalizer-effect-a-tutorial.html
+
+    private static final String LOG_TAG = "textextext";
 
     private static final float VISUALIZER_HEIGHT_DIP = 50f;
     private final int MY_PERMISSIONS_RECORD_AUDIO = 1;
 
     private int audioSessID;
+
+    private ImageButton mBackButton;
 
     private MediaPlayer mMediaPlayer;
     private Equalizer mEqualizer;
@@ -44,9 +53,14 @@ public class AudioFxActivity extends AppCompatActivity {              //https://
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_effects);
 
+       // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        mBackButton = (ImageButton) findViewById(R.id.backButton);
+        mBackButton.setOnClickListener(this);
+
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
-       audioSessID = getIntent().getIntExtra("audioSessID",0);
+        audioSessID = getIntent().getIntExtra("audioSessID", 0);
 
         mEqualizer = new Equalizer(0, audioSessID);
         mEqualizer.setEnabled(true);
@@ -79,18 +93,12 @@ public class AudioFxActivity extends AppCompatActivity {              //https://
                 == PackageManager.PERMISSION_GRANTED) {
 
             //Go ahead with recording audio now
-            setupVisualizerFxAndUI();;
+            setupVisualizerFxAndUI();
+            ;
         }
         setupEqualizerFxAndUI();
 
         mVisualizer.setEnabled(true);
-
-//        mMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            public void onCompletion(MediaPlayer mediaPlayer) {
-////                disable the visualizer as it's no longer needed
-//                mVisualizer.setEnabled(false);
-//            }
-//        });
     }
 
     /* shows spinner with list of equalizer presets to choose from
@@ -285,6 +293,12 @@ public class AudioFxActivity extends AppCompatActivity {              //https://
     }
 
 
+    @Override
+    public void onClick(View view) {
+        mVisualizer.setEnabled(false);
+        Toast.makeText(getApplicationContext(), "Leaving the equalizer area...", Toast.LENGTH_SHORT).show();
+        finish();
+    }
 }
 
 
