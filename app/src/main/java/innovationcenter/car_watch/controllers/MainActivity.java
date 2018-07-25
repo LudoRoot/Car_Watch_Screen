@@ -1,5 +1,6 @@
 package innovationcenter.car_watch.controllers;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -7,6 +8,9 @@ import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.concurrent.TimeUnit;
 
 import controllers.R;
 
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        // this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         mCallButton = (Button) findViewById(R.id.activity_main_call_btn);
         mRadioButton = (Button) findViewById(R.id.activity_main_radio_btn);
