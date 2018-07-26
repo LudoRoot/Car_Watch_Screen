@@ -44,7 +44,7 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_radio);
 
-      //  this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         mPlay = (ImageButton) findViewById(R.id.play_music);
         mPlay.setImageResource(R.drawable.baseline_pause_circle_outline_24);
@@ -103,6 +103,7 @@ public class RadioActivity extends AppCompatActivity implements View.OnClickList
                 paused = true;
                 mPlay.setImageResource(R.drawable.play_white);
                 Toast.makeText(getApplicationContext(), "Leaving the radio area...", Toast.LENGTH_SHORT).show();
+                //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);                                      //inefficace
                 finish();
 
                 break;

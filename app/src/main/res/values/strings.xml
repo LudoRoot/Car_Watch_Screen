@@ -4,10 +4,23 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="flat">Flat</string>
-    <string name="bass_boost">Bass boost</string>
-    <string name="about">About...</string>
-    <string name="ok">OK</string>
-    <string name="enabled">Enabled</string>
-    <string name="service_name">Audio Service</string>
-    <string name="copyright_message">Simple Equalizer v0.1a, Copyright \u00A92013 Kevin Boone. Feel free to distribute as you see fit.</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="text_bluetooth_off">Bluetooth is Off</string>
+    <string name="text_bluetooth_on">Bluetooth is On</string>
+
+    <string name="text_enable">Enable</string>
+    <string name="text_disable">Disable</string>
+
+    <string name="text_view_paired">Paired Devices</string>
+    <string name="text_scan_devices">Scan Devices</string>
+    <string name="text_stop_scan">Scan Devices</string>
+
+    <string name="text_list_paired_devices">Paired Devices</string>
+    <string name="text_list_devices">List of Devices</string>
+
+    <string name="text_pair">Pair</string>
+
+
 </resources>

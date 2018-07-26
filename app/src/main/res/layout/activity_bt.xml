@@ -1,50 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="innovationcenter.car_watch.controllers.BTActivity">
-<GridLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
-    android:columnCount="2"
-    android:rowCount="3"
-    android:padding="10dp"
-    >
+    android:orientation="vertical"
+    android:padding="@dimen/activity_vertical_margin"
+    android:background="@drawable/wp_bt">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:layout_rowWeight="1"
-        android:text="Voulez-vous vous connecter à un appareil ?"/>
-    <Button
-        android:id="@+id/listDevButton"
-        android:layout_width="wrap_content"
-        android:layout_column="0"
-        android:layout_row="1"
-        android:layout_rowWeight="1"
-        android:layout_height="wrap_content"
-        android:text="Known devices"/>
-    <Button
-        android:id="@+id/exitButton"
-        android:layout_width="wrap_content"
-        android:layout_column="1"
-        android:layout_row="1"
-        android:layout_rowWeight="1"
-        android:layout_height="wrap_content"
-        android:text="Exit"/>
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_column="0"
-        android:layout_row="2"
-        android:layout_rowWeight="1"
-        android:layout_height="wrap_content"
-        android:text="Search for Devices"/>
+        android:gravity="center"
+        android:textSize="17sp"
+        android:textColor="#ff0000"
+        android:text="@string/text_bluetooth_off" />
 
-</GridLayout>
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_enable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/text_enable" />
+
+    <Button
+        android:id="@+id/btn_view_paired"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:enabled="false"
+        android:text="@string/text_view_paired" />
+
+    <Button
+        android:id="@+id/btn_scan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:enabled="false"
+        android:text="@string/text_scan_devices" />
+
+</LinearLayout>
