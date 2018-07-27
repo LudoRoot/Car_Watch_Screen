@@ -27,6 +27,8 @@ import android.bluetooth.BluetoothDevice;
 import controllers.R;
 import innovationcenter.car_watch.entities.DeviceListActivity;
 
+import static android.app.PendingIntent.getActivity;
+
 
 public class BTActivity extends AppCompatActivity {
 
@@ -72,11 +74,14 @@ public class BTActivity extends AppCompatActivity {
         if (mBluetoothAdapter == null) {
             showUnsupported();
         } else {
+
+
+
             mPairedBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-                    Log.i(LOG_TAG, "point reached #############################");
+                    Log.i(LOG_TAG, "point reached #############################");          // a enlever (pour le dev et debuguage)
                     if (pairedDevices == null || pairedDevices.size() == 0) {
                         showToast("No Paired Devices Found");
                     } else {
@@ -122,7 +127,8 @@ public class BTActivity extends AppCompatActivity {
             }
         }
 
-        IntentFilter filter = new IntentFilter();
+        // we register the reciever
+        final IntentFilter filter = new IntentFilter();
 
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
         filter.addAction(BluetoothDevice.ACTION_FOUND);
@@ -130,6 +136,7 @@ public class BTActivity extends AppCompatActivity {
         filter.addAction(BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
 
         registerReceiver(mReceiver, filter);
+        //
     }
 
     @Override
